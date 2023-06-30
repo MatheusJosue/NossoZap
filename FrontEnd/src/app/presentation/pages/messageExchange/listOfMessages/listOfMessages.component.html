@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg borderBot">
+  <div class="container-fluid">
+    <div style="display: flex;justify-content: start; align-items: center;">
+      <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png"  class="img rounded-circle "/>
+       <span class="ps-3 subtitle">{{currentUser.userName}}</span>
+    </div>
+    <div class="btnNav">
+      <a class="pointer pe-4" [routerLink]="'/dashboard'"><i class="bi bi-house-door-fill"></i></a>
+      <a class="pointer" (click)="openModalFriendList()"><i class="bi bi-send-plus-fill"></i></a>
+    </div>
+  </div>
+</nav>
+
+<div class="divBusca">
+  <i class="bi bi-search ps-3 pe-3 "></i>
+  <input type="text" class="txtBusca" placeholder="Buscar..."/>
+</div>
+
+<div class="container-fluid" *ngIf="chats">
+  <div class="messages" *ngFor="let chat of chats">
+    <div class="row mt" (click)="goToChatWithFriend(chat.username)">
+      <div class="col-2 alignImg">
+        <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png"  class="img rounded-circle "/>
+      </div>
+      <div class="col-10">
+        <div class="row styleOfPeopleSendedMessage">
+          <div class="col-8 "><span class="nameUser">{{chat.username}}</span></div>
+          <div class="col-4 alignTime"><span class="timeMessage">{{chat.date | date: "short" }}</span></div>
+        </div>
+        <div class="row pb-2">
+          <span class="alignMessage">{{chat.lastMessage}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" *ngIf="chats.length == 0">
+  <div class="messages" >
+    <div class="row mt">
+      <div class="col-12 notChats">
+        <span class="text-center"> Não encontramos nenhuma conversa. <br> Inicie uma nova conversa com um amigo. <br> Basta clicar no icone a cima.</span>
+        <img src="/assets/images/sem-resultado.png" width="100%" class="img-fluid ">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal lista de amigos -->
+<div class="friendList" style="display: none;">
+  <div class="friendList-content modal-content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-title title">
+          Lista de amigos
+          <i class="bi bi-people-fill icon"></i>
+          <span class="close" (click)="closeModalFriendList()">&times;</span>
+        </div>
+        <div class="row card-body">
+          <div class="col-lg-12 card">
+              <div class="">
+                <div class="subtitle text-center">
+                    Nome do usuario
+                </div>
+                <div *ngIf="friends">
+                  <div *ngFor="let friend of friends" class="alignCenter">
+                    <a class="pointer mt-3" (click)="goToChatWithFriend(friend.username)">
+                      <div class="d-flex justify-content-between ">
+                          <span class="text-center pe-1 friendname">{{friend.username}}</span>
+                          <i class="bi bi-send-plus"></i>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

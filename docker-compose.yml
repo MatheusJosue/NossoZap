@@ -1,0 +1,45 @@
+version: '3.0'
+
+services:
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nossozap
+      MYSQL_USER: zapadmin
+      MYSQL_PASSWORD: root
+    command: --max_allowed_packet=32505856
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+
+  api:
+    container_name: nosso-zap-api
+    environment:
+      - TZ=America/Sao_Paulo
+    image: nosso-zap-api
+    build:
+      context: Backend
+    depends_on:
+      - database
+    ports:
+      - "81:80"
+
+  # frontend:
+  #   build:
+  #     context: Frontend
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./Frontend/nginx-configs:/etc/nginx/conf.d
+  #   environment:
+  #     TZ: "America/Sao_Paulo"
+  #   restart: unless-stopped
+
+volumes:
+  dbdata:
+

@@ -1,0 +1,164 @@
+<div class="row alignCard">
+  <div class="col-8 card styleOfCard">
+    <div class="row">
+      <div class="col-1">
+        <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="img rounded-circle icon" />
+      </div>
+      <div class="col-11">
+        <input type="text" (click)="openModalNewPost()" class="form-control newPost" id="newPost"
+          aria-describedby="newPost" placeholder="No que você está pensando ?">
+      </div>
+    </div>
+  </div>
+
+  <!-- novas publicações -->
+  <div class="alignCenter" *ngFor="let post of posts; let i = index">
+    <div class="col-8 card styleOfCard">
+      <div class="row ">
+        <div class="col-1 alignImg">
+          <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="img rounded-circle icon" />
+        </div>
+        <div class="col-11 alignItensOfPost">
+          <div>
+            <span class="title">{{post.username}}</span><br><span class="subtitle">{{timeDifference(post.date)}}
+              <i class="bi bi-people-fill"></i>
+            </span>
+          </div>
+          <div *ngIf="post.username == currentUser.userName">
+            <a class="mx-3 pointer" style="color: black"  (click)="openModalAttPost(post.id)"><i class="bi bi-brush-fill"></i></a>
+            <a class="mx-3 pointer" style="color: red"  (click)="openModalDeletePost(post.id)"><i class="bi bi-trash3-fill"></i></a>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <span>{{post.message}}</span>
+        </div>
+        <div class="col-12 pt-3">
+          <img [src]=post.url class="imgBorder img-fluid" style="width: 100%;">
+        </div>
+        <div class="col-12 mt-2" *ngIf="post.likes.length > 0">
+          <i class="bi bi-hand-thumbs-up-fill pe-2" style="color: blue"></i>{{post.likes.length}}
+        </div>
+      </div>
+  
+      <div class="row line">
+        <div class="col-6 alignCenter">
+          <button type="button" class="btn btn-light sizeBtn" style="color: rgb(55, 0, 255)" *ngIf="!getUserLikeInPost(post)" (click)="createLike(post.id)">Curtir<i class="bi bi-hand-thumbs-up-fill ms-2" style="color: rgb(55, 0, 255)"></i></button>
+          <button type="button" class="btn btn-light sizeBtn" style="color: rgb(255, 0, 0)" *ngIf="getUserLikeInPost(post)" (click)="deleteLike(post.id)">Descurtir<i class="bi bi-hand-thumbs-down-fill ms-2" style="color: rgb(255, 0, 0)"></i></button>
+        </div>
+        <div class="col-6 alignCenter mt-2">
+          <button type="button" class="btn btn-light sizeBtn" (click)="scrollToComment(i)">
+            <i class="bi bi-chat-left-dots"></i> Comentar
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="post.comments">
+        <div *ngFor="let comment of post.comments">
+          <div class="row styleOfComment bgComment">
+            <div class="col-1 alignCenter">
+              <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="img rounded-circle icon" />
+            </div>
+            <div class="col-10">
+              <span class="title">{{comment.userName}}</span>
+              <br>
+              <span>{{comment.message}}</span>
+              <br>
+              <span class="subtitle">{{timeDifference(comment.date)}}</span>
+            </div>
+            <div  class="col-1 alignCenter">
+              <a class="mx-3 pointer" style="color: red"  (click)="deleteComment(comment.id)"><i class="bi bi-trash3-fill"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-1">
+          <img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="img rounded-circle icon" />
+        </div>
+        <div class="col-11 input-with-icon" >
+          <input type="text" id="comment-{{i}}" class="form-control newPost" (click)="showButton = true" (blur)="hideButton()" id="comment" aria-describedby="comment" placeholder="Escreva um comentário..." autocomplete="off">
+          <a style="cursor: pointer;" (click)="createComment(post.id, i)"><i class="bi bi-send" *ngIf="showButton"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <!-- modal criar postagem -->
+  <div class="createPost" style="display: none;">
+    <div class="createPost-content modal-content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card-title title">
+            Criar nova postagem
+            <i class="bi bi-postcard" style="font-size: 1.3rem;"></i>
+          </div>
+          <div class="row card-body">
+            <div class="col-lg-12 mt-4">
+              <form [formGroup]="formCreate">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="mensagem"><i class="bi bi-window-dock"></i></span>
+                  <input id="newPostInput" type="text" class="form-control" placeholder="Mensagem" formControlName="message" autocomplete="mensagem">
+                </div>
+                <div class="input-group mb-3 alignCenter" >
+                  <input type="file" id="photo" #imageInput (change)="processFile(imageInput)" accept="image/*">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card-footer alignBtns">
+            <button type="button" class="btn btn-primary mx-3" (click)="createPost()">Adicionar</button>
+            <button type="button" class="btn btn-secondary mx-3" (click)="closeModalNewPost()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal atualizar postagem -->
+  <div class="updatePost" style="display: none;">
+    <div class="updatePost-content modal-content">
+      <div class="row">
+        <div class="col-12 title">Atualizar o Post
+          <div class="row card-body">
+            <div class="col-12 mt-4">
+              <form [formGroup]="formUpdate">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="mensagem"><i class="bi bi-window-dock"></i></span>
+                  <input type="text" class="form-control" placeholder="Mensagem" type="mensagem"formControlName="message" autocomplete="mensagem">
+                </div>
+              </form>
+            </div>
+            <div class="card-footer alignBtns">
+              <button type="button" class="btn btn-success mx-3" (click)="updatePost()">Atualizar <i class="bi bi-brush-fill"></i></button>
+              <button type="button" class="btn btn-secondary mx-3" (click)="closeModalAttPost()">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- modal deletar postagem -->
+    <div class="deletePost" style="display: none;">
+      <div class="deletePost-content modal-content">
+        <div class="row">
+          <div class="col-12 title">
+              Deseja remover a postagem?
+            <div class="row card-body">
+              <div class="card-footer alignBtns">
+                <button type="button" class="btn btn-danger mx-3" (click)="deletePost()">Remover <i class="bi bi-trash"></i></button>
+                <button type="button" class="btn btn-secondary mx-3" (click)="closeModalDeletePost()">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

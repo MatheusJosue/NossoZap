@@ -1,0 +1,143 @@
+<div class="sidebar">
+    <div class="row">
+      <div class="col-12 align">
+        <a class="sublinks" (click)="openModalPerfil()"><img src="https://therichpost.com/wp-content/uploads/2020/06/avatar2.png" class="img rounded-circle icon"/>{{this.currentUser.userName}}</a>
+        <a class="sublinks" (click)="attPage()"><i class="bi bi-house-fill icon"></i> Página Inicial</a>
+        <a class="sublinks" (click)="openModalAddFriend()"><i class="bi bi-person-plus-fill icon"></i> Adicionar amigo</a>
+        <a class="sublinks" (click)="openModalPedidosAmizade()"><i class="bi bi-card-checklist icon"></i> Pedidos de amizade</a>
+        <a class="sublinks" (click)="openModalFriendList()"><i class="bi bi-people-fill icon"></i> Lista de amigos</a>
+        <a class="sublinks"  href="messageExchange"><i class="bi bi-send-fill icon"></i> Messenger</a>
+      </div>
+    </div>
+</div>
+
+<!-- modal adicionar amigos -->
+<div class="addFriend" style="display: none;">
+  <div class="addFriend-content modal-content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-title title">
+          Adicionar novo Amigo 
+          <img src="/assets/images/addfriend.png" width="8%" class="img-fluid ">
+        </div>
+        <div class="row card-body">
+          <div class="col-lg-12 mt-4">
+            <form class="align" [formGroup]="formFriend">
+              <div class="input-group inputs">
+                <span class="input-group-text" id="username"><i class="bi bi-file-earmark-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nome do usuario" type="username" formControlName="username" autocomplete="Username">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer alignBtns">
+          <button type="button" class="btn btn-primary mx-3" (click)="addFriend()">Adicionar</button>
+          <button type="button" class="btn btn-secondary mx-3" (click)="closeModalAddFriend()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal pedidos de amizade -->
+<div class="pedidosAmizade" style="display: none;">
+  <div class="pedidosAmizade-content modal-content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-title title">
+          Pedidos de amizade
+          <img src="/assets/images/requests.png" width="8% "class="img-fluid">
+          <span class="close" (click)="closeModalPedidosAmizade()">&times;</span>
+        </div>
+        <div class="row card-body">
+          <div class="col-lg-12 card">
+              <table class="table table-striped table-responsive">
+                <thead class="thead-dark">
+                  <tr class="mc-data-table">
+                    <th scope="col" style="text-align: center;">Nome do usuario</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="requests">
+                  <tr  *ngFor="let request of requests" class="mc-data-table">
+                    <td class="d-flex justify-content-between">
+                      <div class="d-flex justify-content-start">
+                        <span class="justify-self-start">{{request.fromUsername}}</span>
+                      </div>
+                      <div class="d-flex justify-content-end">
+                        <a class="me-3"  (click)="AcceptRequest(request.id)"><i class="bi bi-check-circle-fill"></i></a>
+                        <a class="" (click)="RefuseRequest(request.id)"><i class="bi bi-x-circle-fill" style="color: red;"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal perfil -->
+<div class="perfil" style="display: none;">
+  <div class="perfil-content modal-content">
+    <div class="row">
+      <div class="col-12 cardPerfil">
+        <div class="row card-body">
+          <div class="col-12"> 
+            <div class="row" >
+              <div class="card">
+                <div class="alignCenter">
+                  <img src="\assets\images\profile_user.png" width="45%" class="img-fluid" alt="">
+                </div>
+                <span class="closePerfil" style="position: absolute;right: 20px;" (click)="closeModalPerfil()">&times;</span>
+                <h1>Matheus</h1>
+                <p class="title">Software Developer</p>
+                <p>Impacta University</p>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <p><button class="btnPerfil">Contact</button></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal lista de amigos -->
+<div class="friendList" style="display: none;">
+  <div class="friendList-content modal-content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-title title">
+          Lista de amigos
+          <i class="bi bi-people-fill icon"></i>
+          <span class="close" (click)="closeModalFriendList()">&times;</span>
+        </div>
+        <div class="row card-body">
+          <div class="col-lg-12 card">
+              <div class="">
+                <div class="subtitle text-center">
+                    Nome do usuario
+                </div>
+                <div *ngIf="friends">
+                  <div *ngFor="let friend of friends" class="alignCenter">
+                    <a class="pointer mt-3" (click)="goToChatWithFriend(friend.username)">
+                      <div class="d-flex justify-content-between ">
+                          <span class="text-center pe-1 friendname">{{friend.username}}</span>
+                          <i class="bi bi-send-plus"></i>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,772 @@
+{
+	"info": {
+		"_postman_id": "5cd0fc15-7434-4bdf-807f-7f02d9cb55af",
+		"name": "NossoZap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "sign-in",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"maxtheu\",\r\n  \"password\": \"Cabuto12@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Authentication/sign-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Authentication",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"danxjj\",\r\n  \"email\": \"danxjj@hotmail.com\",\r\n  \"password\": \"Cabuto12@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Authentication/sign-up",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Authentication",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friends",
+			"item": [
+				{
+					"name": "add-friend",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"maxtheu\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Friend/add-friend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Friend",
+								"add-friend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-friends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Friends/list-friends",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Friends",
+								"list-friends"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-friend",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"danxjj\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Friend/remove-friend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Friend",
+								"remove-friend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-friend",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Friend/get-friend?username=maxtheu",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Friend",
+								"get-friend"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "maxtheu"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "create-post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"message\": \"testadasso\",\r\n  \"photo\": \"\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Post/create-post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Post",
+								"create-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Post/remove-post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Post",
+								"remove-post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Post/get-post?id=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Post",
+								"get-post"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Post/list-posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Post",
+								"list-posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "create-message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"toUsername\": \"maxtheu\",\r\n  \"text\": \"vamos lá\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/message/create-message",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"message",
+								"create-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-message",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/message/remove-message",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"message",
+								"remove-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/message/get-message",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"message",
+								"get-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-message-with-user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/message/list-messages-with-user?username=maxtheu",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"message",
+								"list-messages-with-user"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "maxtheu"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request",
+			"item": [
+				{
+					"name": "/Request/accept-request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "-91887175",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Request/accept-request",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Request",
+								"accept-request"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "-91887175",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Request/accept-request",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Request",
+										"accept-request"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Request/refuse-request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "-91887175",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/Request/refuse-request",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Request",
+								"refuse-request"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "-91887175",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Request/refuse-request",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Request",
+										"refuse-request"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Request/list-pendent-requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Request/list-pendent-requests",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Request",
+								"list-pendent-requests"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/Request/list-pendent-requests",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Request",
+										"list-pendent-requests"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/Request/send-friend-request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"danxjj\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Request/send-friend-request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Request",
+								"send-friend-request"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"ut culpa et\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/Request/send-friend-request",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"Request",
+										"send-friend-request"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "create-like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"postId\": 10\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Post/new-like",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Post",
+								"new-like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-likes",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delete-like",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/Like/list-likes?likeId=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Like",
+								"list-likes"
+							],
+							"query": [
+								{
+									"key": "likeId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-likes-by-post-id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:44359",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

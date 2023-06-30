@@ -1,0 +1,17 @@
+.sidebar {
+  padding: 0px;
+  height: 100%;
+  position: sticky;
+  top: 146px;
+  z-index: 1;
+  border-right: 1px solid;
+}
+
+.bg{
+  background-color: #eaeaea;
+
+}
+
+.size{
+  min-height: 91vh;
+}

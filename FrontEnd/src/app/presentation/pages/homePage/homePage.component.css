@@ -1,0 +1,16 @@
+.homeBg {
+  background-color: #5a5a5a;
+  height: 100vh;
+}
+
+.homeCard {
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px 10px rgb(0, 0, 0);
+}
+
+.alignCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}

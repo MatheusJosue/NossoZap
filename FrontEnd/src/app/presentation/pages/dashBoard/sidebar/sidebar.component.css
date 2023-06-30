@@ -1,0 +1,202 @@
+.bg{
+    background-color: white;
+    height: 90vh;
+} 
+
+.img {
+    width: 32px;
+}
+
+.alignCenter{
+    display: flex;
+    justify-content: center;
+}
+
+.icon{
+    font-size: 24px;
+    padding-left: 4px;
+    margin-right: 10px;
+}
+
+.sublinks {
+    text-decoration: none;
+    margin-bottom: 8px;
+    color:rgb(63, 63, 63);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.sidebar{
+    padding-top: 15px;
+    padding-left: 10px;
+
+
+}
+
+.align{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.addFriend {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+  
+.addFriend-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+
+.pedidosAmizade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+  
+.pedidosAmizade-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+
+.perfil {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+  
+.perfil-content {
+    background-color: #000000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #000000;
+    width: 35%;
+}
+  
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closePerfil{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    justify-content: end;
+}
+
+.closePerfil:hover{
+    color: #aaaaaa;
+    cursor: pointer;
+}
+
+.friendList {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+ 
+.friendname {
+    text-decoration: none;
+    color: black;
+}
+
+.friendList-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+  
+.inputs {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+}
+  
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.subtitle{
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
+.alignBtns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+  
+a:hover{
+    cursor: pointer;
+}
+  
+.cardPerfil {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
+  
+.btnPerfil {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+

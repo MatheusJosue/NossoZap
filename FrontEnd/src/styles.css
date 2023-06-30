@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+   
+    background-color: white;
+
+  }
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(182, 182, 182);
+    border-radius: 20px;
+    border: 3px solid rgb(0, 0, 0);
+  }

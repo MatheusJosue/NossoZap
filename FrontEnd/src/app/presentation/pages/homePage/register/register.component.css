@@ -1,0 +1,16 @@
+.alignBtns {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2%;
+}
+  
+.registerTitle {
+  padding-top: 1%;
+  text-align: center;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+  
+  

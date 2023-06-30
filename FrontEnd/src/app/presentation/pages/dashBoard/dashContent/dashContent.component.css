@@ -1,0 +1,148 @@
+.img {
+    width: 32px;
+}
+
+.alignCard{
+    padding-top: 3%;
+    display: flex ;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.styleOfCard{
+    margin-top: 2%;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.newPost {
+    background-color: #e9e9e9;
+    border-radius: 19px;
+}
+
+.subtitle{
+    font-size: 0.8em;
+}
+
+.alignImg{
+    display: flex;
+    align-items: center;
+}
+
+.alignCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alignItensOfPost{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title{
+    text-align: center;
+    font-weight: 500;
+}
+
+.sizeBtn{
+    width: 100%;
+}
+
+.createPost {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+  
+.createPost-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+
+.updatePost {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.pointer{
+    cursor: pointer;;
+}
+  
+.updatePost-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+
+.deletePost {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+  
+.deletePost-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+}
+
+.alignBtns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.input-with-icon {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .input-with-icon input[type="text"] {
+    padding-right: 30px; /* espaço para o ícone */
+  }
+  
+  .input-with-icon i {
+    position: absolute;
+    top: 48%;
+    right: 26px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+  }
+
+  .line{
+    border-bottom: 1px solid #b7b7b7;
+    border-top: 1px solid #b7b7b7;
+  }
+
+  .styleOfComment{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .bgComment{
+    padding: 5px;
+    background-color: #e9e9e9;
+    border-radius: 30px;
+  }
